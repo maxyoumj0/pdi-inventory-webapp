@@ -1,0 +1,25 @@
+<br>
+<br>
+<form>
+  <fieldset>
+    <legend>{{ inventoryGet.descrpt }} Chart</legend>
+    <div class="container">
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="item">Date</label>
+          <input type="date" id="date" name="dateInput"  class="form-control" [(ngModel)]="dateInput">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<button class="btn btn-success" (click)="onClick()">Load</button>
+<google-chart #chart
+  [type]="type"
+  [data]="data"
+  [columnNames]="columnNames"
+  [options]="options"
+  [width]="width"
+  [height]="height"
+  ></google-chart>

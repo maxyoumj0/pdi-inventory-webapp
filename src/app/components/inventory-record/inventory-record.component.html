@@ -1,0 +1,39 @@
+<form #addItemForm="ngForm" (ngSubmit)="onSubmit(qtys, dates); addItemForm.reset()">
+  <fieldset>
+    <legend>{{ name }} {{ action }}  {{ rest }}</legend>
+    <div class="row">
+      <div class="form-group">
+        <label class="form-control-label" for="code">Code</label>
+        <input class="form-control" id="code" type="text" placeholder="Code here…" (input)="updateCode($event)" required [readonly]="!submitted" name="Codes" ngModel #codes>
+        <div class="text-success" [hidden]="!existCode">Success! Valid Code.</div>
+        <div class="text-warning" [hidden]="existCode || codes.pristine">Invalidx Code! Try Again.</div>
+      </div>
+      <div>
+        <br>
+        &nbsp;
+        <button type="reset" class="btn btn-success" (click)="codes.value=''; onClear()">Clear</button>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="item" [hidden]="!submitted && !submittedSecond">Item</label>
+      <input class="form-control" id="item" type="text" placeholder="Item here…" [value]="item" [hidden]="!submitted && !submittedSecond" name="Items" ngModel readonly #items>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="qty" [hidden]="!submitted && !submittedSecond">Qty / '{{ unit }}'</label>
+      <input class="form-control" id="qty" type="tel" pattern="[0-9]*" placeholder="Quantity here…" [value]="initial" [hidden]="!submitted && !submittedSecond" name="Qtys" novalidate ngModel #qtys>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="date" [hidden]="!submitted && !submittedSecond">Date</label>
+      <input class="form-control" id="date" type="date" [hidden]="!submitted && !submittedSecond" [value]="currentDate" name="Dates" ngModel #dates>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="location" [hidden]="!submitted && !submittedSecond">Location</label>
+      <input class="form-control" id="location" type="text" placeholder="Location here…" [value]="location" [hidden]="!submitted && !submittedSecond" name="Locations" ngModel readonly #locations>
+    </div>
+    <button class="btn btn-success"
+            [disabled]="!addItemForm.valid">Submit</button>
+    <div class="text-primary, font-weight-bold" [hidden]="!formComplete && !transComplete">Success! {{ item }} {{ qty }} {{ unit }} {{ action }}.</div>
+    <div class="text-danger, font-weight-bold" [hidden]="formComplete || !transComplete">Loading!</div>
+  <br>
+  </fieldset>
+</form>

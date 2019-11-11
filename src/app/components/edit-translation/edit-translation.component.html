@@ -1,0 +1,37 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <form #editForm="ngForm" (ngSubmit)="editForm.resetForm()">
+        <fieldset>
+          <legend>Edit Item {{ translationGet.descrpt }}</legend>
+          <div class="form-group">
+            <label class="form-control-label" for="name">Item Name/Description</label>
+            <input class="form-control" id="name" name="nameInput" type="text" placeholder="Item Name here…" [(ngModel)]="nameInput">
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="supplier">Supplier</label>
+            <input class="form-control" id="supplier" name="supplierInput" type="text" placeholder="Supplier here…" [(ngModel)]="supplierInput">
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="price">Price</label>
+            <input class="form-control" id="price" name="priceInput" type="text" placeholder="Price here…" [(ngModel)]="priceInput">
+          </div>
+          <button class="btn btn-success" [routerLink]="['/translation']" (click)="onSubmit()">Save</button>
+        </fieldset>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <form #deleteForm="ngForm" (ngSubmit)="deleteForm.resetForm()">
+        <fieldset>
+          <legend>Delete Item</legend>
+          <div class="form-group">
+            <label class="form-control-label" [hidden]="!confirm" for="confirm">Are You Sure? (Enter 'yes')</label>
+            <input class="form-control" id="confirm" name="confirmInput" [hidden]="!confirm" type="text" placeholder="Enter yes to continue..." [(ngModel)]="confirmInput">
+          </div>
+          <button class="btn btn-danger" type="button" (click)="onDelete()">DELETE</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

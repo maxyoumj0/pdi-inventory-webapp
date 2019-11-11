@@ -1,0 +1,17 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <form #deleteForm="ngForm" (ngSubmit)="deleteForm.resetForm()">
+        <fieldset>
+          <legend>Delete Item</legend>
+          <div class="form-group">
+            <label class="form-control-label" [hidden]="!confirm" for="confirm">Are You Sure? (Enter 'yes')</label>
+            <input class="form-control" id="confirm" name="confirmInput" [hidden]="!confirm" type="text" placeholder="Enter yes to continue..." [(ngModel)]="confirmInput">
+          </div>
+          <button class="btn btn-danger" type="button" (click)="onDelete()">DELETE</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

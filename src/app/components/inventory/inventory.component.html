@@ -1,0 +1,57 @@
+<br>
+  <form #inventoryForm="ngForm" (ngSubmit)="onSubmit(); inventoryForm.resetForm()">
+    <fieldset>
+      <legend>Inventory Search</legend>
+      <div class="container">
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="item">Item</label>
+            <input type="text" id="item" name="itemInput"  class="form-control" placeholder="Enter Item name..." [(ngModel)]="itemInput">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="loc">Location</label>
+            <input type="text" id="loc" name="locInput"  class="form-control" placeholder="Enter Location..." [(ngModel)]="locInput">
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </fieldset>
+  </form>
+<br>
+
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th scope="col">PDI Code</th>
+      <th scope="col">Category Code</th>
+      <th scope="col">Item</th>
+      <th scope="col">Category</th>
+      <th scope="col">Description</th>
+      <th scope="col">Supplier</th>
+      <th scope="col">Handling Unit</th>
+      <th scope="col">Location</th>
+      <th scope="col">Qty</th>
+      <th scope="col">Price</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-secondary" *ngFor="let inven of displays">
+      <td>{{ inven.pdi_code }}</td>
+      <td>{{ inven.ctg_code }}</td>
+      <td>{{ inven.item }}</td>
+      <td>{{ inven.ctg }}</td>
+      <td>{{ inven.descrpt }}</td>
+      <td>{{ inven.supplier }}</td>
+      <td>{{ inven.unit }}</td>
+      <td>{{ inven.location }}</td>
+      <td>{{ inven.qty }}</td>
+      <td>{{ inven.price }}</td>
+      <td>
+        <div>
+          <a class="btn btn-dark" [routerLink]="['/editInventory/' + inven.pdi_code]">Edit</a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

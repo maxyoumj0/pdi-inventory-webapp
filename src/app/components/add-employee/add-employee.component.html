@@ -1,0 +1,25 @@
+<form #employeeForm="ngForm" (ngSubmit)="onSubmit(names); employeeForm.reset()">
+  <fieldset>
+    <legend>Add New Employee</legend>
+    <div class="form-group">
+      <label class="control-label" for="name">Employee Name</label>
+      <input class="form-control" id="name" type="text" placeholder="Employee Name here…" name="Name" ngModel required #names>
+    </div>
+    <button class="btn btn-success"
+      [disabled]="!employeeForm.valid"
+            >Submit</button>
+  </fieldset>
+</form>
+<br><br>
+<form #deleteRest="ngForm" (ngSubmit)="onSub(drests); deleteRest.reset()">
+  <fieldset>
+    <legend>Remove Employee</legend>
+    <div class="form-group">
+      <label class="control-label" for="drest">Employee to Remove</label>
+      <input class="form-control" id="drest" type="text" placeholder="Employee Name here…" name="Drest" ngModel required #drests>
+    </div>
+    <button class="btn btn-success"
+    [disabled]="!deleteRest.valid"
+            >Submit</button>
+  </fieldset>
+</form>

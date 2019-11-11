@@ -1,0 +1,22 @@
+<br>
+<div class="container" [hidden]="chose">
+  <div class="row">
+    <div class="col-md">
+      <button class="btn btn-primary" (click)="onChoose(1, true)">Item</button>
+    </div>
+    <div class="col-md">
+      <button class="btn btn-primary" (click)="onChoose(2, true)">Employee</button>
+    </div>
+    <div class="col-md">
+      <button class="btn btn-primary" (click)="onChoose(3, true)">Restaurant</button>
+    </div>
+  </div>
+</div>
+
+<app-add-item [hidden]="!choseOne"></app-add-item>
+<app-add-employee [hidden]="!choseTwo"></app-add-employee>
+<app-add-rest [hidden]="!choseThree"></app-add-rest>
+<div>
+  <br>
+  <button class="btn btn-primary" [hidden]="!chose" (click)="choseOne=false;choseTwo=false;choseThree=false;chose=false">Master</button>
+</div>

@@ -1,0 +1,106 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <form #itemForm="ngForm" (ngSubmit)="onSubmit(ctgs, locations); itemForm.reset()">
+        <fieldset>
+          <legend>Add New Item</legend>
+          <div class="form-group">
+            <label class="control-label" for="des">Item Name</label>
+            <input class="form-control" id="des" type="text" placeholder="Item Name here…" [(ngModel)]="descrpt" name="Des" ngModel required #desc>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="supCode">Supply Code</label>
+            <input class="form-control" id="supCode" type="text" placeholder="Supply Code here…" [(ngModel)]="supplyCode" name="SupCode" ngModel required #supcodes>
+          </div>
+          <div class="form-group">
+            <label for="ctg">Category</label>
+            <select class="form-control" name="Category" id="ctg" required #ctgs>
+              <option value="" disabled selected>Select category...</option>
+              <option value="10">Meats</option>
+              <option value="11">Sea Food</option>
+              <option value="12">Produce</option>
+              <option value="13">Poultry</option>
+              <option value="14">Food Related</option>
+              <option value="15">Frozen</option>
+              <option value="16">Daily</option>
+              <option value="17">Non-Food Related</option>
+              <option value="50">Chemicals</option>
+              <option value="51">Disposables</option>
+              <option value="52">Cookware</option>
+              <option value="53">Dinnerware</option>
+              <option value="54">Smallware</option>
+              <option value="55">Server Clothes</option>
+              <option value="56">Chef Clothes</option>
+              <option value="57">Chef Supply</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="unit">Handling Unit</label>
+            <input class="form-control" id="unit" type="text" placeholder="Handling Unit here…" [(ngModel)]="unit" name="Unit" required ngModel #units>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="sup">Supplier</label>
+            <input class="form-control" id="sup" type="text" placeholder="Supplier here…" [(ngModel)]="supplier" name="Supplier" required ngModel #suppliers>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="qty">Quantity</label>
+            <input class="form-control" id="qty" type="number" placeholder="Quantity here…" name="Quantity" [(ngModel)]="qty" required ngModel #qtys>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="price">Price</label>
+            <input class="form-control" id="price" type="number" placeholder="Price here…" name="Price" [(ngModel)]="price" required ngModel #prices>
+          </div>
+          <div class="form-group">
+              <label for="loc">Location</label>
+              <select class="form-control" name="Location" id="loc" required #locations>
+                <option value="" disabled selected>Select location...</option>
+                <option value="Dry Storage 1">Dry Storage 1</option>
+                <option value="Dry Storage 2">Dry Storage 2</option>
+                <option value="Cooler">Cooler</option>
+                <option value="Freezer">Freezer</option>
+              </select>
+            </div>
+          <button class="btn btn-success"
+            [disabled]="!itemForm.valid"
+                  >Submit</button>
+          <br>
+          <div class="text-primary, font-weight-bold" [hidden]="!success">Success! {{ descrpt }} added.</div>
+        </fieldset>
+      </form>
+    </div>
+
+    <div class="col-md-6">
+        <form #existForm="ngForm" (ngSubmit)="onSub(); existForm.reset()">
+            <fieldset>
+              <legend>Add New Supplier</legend>
+              <div class="form-group">
+                  <label class="control-label" for="pdi">PDI Code</label>
+                  <input class="form-control" id="pdi" type="text" placeholder="PDI Code here…" name="Quantity" [(ngModel)]="pdi" required ngModel #pdis>
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="supCode">Supply Code</label>
+                <input class="form-control" id="supCode" type="text" placeholder="Supply Code here…" [(ngModel)]="supply_code2" name="SupCode2" ngModel required #supcodes2>
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="sup">Supplier</label>
+                <input class="form-control" id="sup" type="text" placeholder="Supplier here…" [(ngModel)]="supplier2" name="Supplier2" required ngModel #suppliers2>
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="price">Price</label>
+                <input class="form-control" id="price" type="text" placeholder="Price here…" name="Price" [(ngModel)]="price2" required ngModel #prices2>
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="qty">Quantity</label>
+                <input class="form-control" id="qty" type="text" placeholder="Quantity here…" name="Quantity" [(ngModel)]="qty2" required ngModel #qtys2>
+              </div>
+              <button class="btn btn-success"
+                [disabled]="!existForm.valid"
+                      >Submit</button>
+              <div class="text-primary, font-weight-bold" [hidden]="!success1">Success! {{ descrpt2 }} added.</div>
+            </fieldset>
+          </form>
+    </div>
+  </div>
+</div>
+

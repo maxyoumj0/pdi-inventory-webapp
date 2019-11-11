@@ -1,0 +1,25 @@
+<form #itemForm="ngForm" (ngSubmit)="onSubmit(rests); itemForm.reset()">
+  <fieldset>
+    <legend>Add New Restaurant</legend>
+    <div class="form-group">
+      <label class="control-label" for="rest">Restaurant to Add</label>
+      <input class="form-control" id="rest" type="text" placeholder="Restaurant Name here…" name="Rest" required ngModel #rests>
+    </div>
+    <button class="btn btn-success"
+    [disabled]="!itemForm.valid"
+            >Submit</button>
+  </fieldset>
+</form>
+<br><br>
+<form #deleteRest="ngForm" (ngSubmit)="onSub(drests); deleteRest.reset()">
+  <fieldset>
+    <legend>Delete Restaurant</legend>
+    <div class="form-group">
+      <label class="control-label" for="drest">Restaurant to Delete</label>
+      <input class="form-control" id="drest" type="text" placeholder="Restaurant Name here…" name="Drest" required ngModel #drests>
+    </div>
+    <button class="btn btn-success"
+    [disabled]="!deleteRest.valid"
+            >Submit</button>
+  </fieldset>
+</form>

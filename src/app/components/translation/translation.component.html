@@ -1,0 +1,45 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <form #inventoryForm="ngForm" (ngSubmit)="onSubmit(); inventoryForm.resetForm()">
+        <fieldset>
+          <legend>Translation Search</legend>
+          <div class="form-group">
+            <label for="item">Item</label>
+            <input type="text" id="item" name="itemInput"  class="form-control" placeholder="Enter Item name..." [(ngModel)]="itemInput">
+          </div>
+          <button type="submit" class="btn btn-success">Submit</button>
+        </fieldset>
+      </form>
+      <br>
+    </div>
+  </div>
+</div>
+
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Supply Code</th>
+      <th scope="col">PDI Code</th>
+      <th scope="col">Description</th>
+      <th scope="col">Supplier</th>
+      <th scope="col">Price</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-secondary" *ngFor="let inven of displays">
+      <td>{{ inven.supply_code }}</td>
+      <td>{{ inven.pdi_code }}</td>
+      <td>{{ inven.descrpt }}</td>
+      <td>{{ inven.supplier }}</td>
+      <td>{{ inven.price }}</td>
+      <td>
+        <div>
+          <a class="btn btn-dark" [routerLink]="['/editTranslation/' + inven.supply_code]">Edit</a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

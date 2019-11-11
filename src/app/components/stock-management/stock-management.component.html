@@ -1,0 +1,39 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <form #stockForm="ngForm">
+        <fieldset>
+          <legend>Enter your Information</legend>
+          <div class="form-group">
+            <label for="action">Action</label>
+            <select class="form-control" id="action" required #actions>
+              <option value="Add">Add</option>
+              <option value="Remove">Remove</option>
+              <option value="Adjust(-)">Adjust(-)</option>
+              <option value="Adjust(+)">Adjust(+)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <select class="form-control" id="name" required #t>
+                <option *ngFor="let n of names" [value]="n.name">{{ n.name }}</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="rest">Restaurant</label>
+              <select class="form-control" id="rest" required #rests>
+                <option *ngFor="let r of restaurants" [value]="r.rest">{{ r.rest }}</option>
+              </select>
+          </div>
+          <button class="btn btn-success"
+            (click)="onSubmit(actions, t, rests)"
+            [disabled]="!stockForm.form.valid">Submit</button>
+        </fieldset>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <app-inventory-record [action]="action" [name]="name" [rest]="rest" [submitted]="submitted"></app-inventory-record>
+    </div>
+  </div>
+</div>
